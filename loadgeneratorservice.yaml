@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+	name: generateload
+spec:
+	replicas: 1
+	selector:
+		matchLabels:
+			app: generateload
+	template:
+		metadata:
+			labels:
+				app: generateload
+		spec:
+			containers:
+			  - name: generateload
+				image: localhost:32000/load-generator
+				ports:
+				- containerPort: 8080
+				env:
+				- name: target
+				  value: "http://10.152.183.225:8080/primecheck"
+				- name: frequency
+				  value: "10.0"
+				command: ["python", "loadgenerator.py"]

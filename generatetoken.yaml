@@ -1,0 +1,8 @@
+lapiVersion: v1
+2 kind: Secret
+3 metadata:
+4   name: admin-user
+5   namespace: kubernetes-dashboard
+6   annotations:
+7       kubernetes.io/service-account.name: "admin-user"
+8 type: kubernetes.io/service-account-token
